@@ -1,0 +1,6 @@
+<form method="post">
+    <h1>Create Your New Article Here!!</h1>
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type="submit" value="Submit">
+</form>

@@ -13,3 +13,19 @@ class AdminPost(admin.ModelAdmin):
     list_filter = (
         'author', 'date'
     )
+
+
+"""
+Django Forms
+    - forms
+    - ModelForms ---
+
+    Model ---> Forms.py ---> views.py
+    CRUD - CREATE, READ, UPDATE, DELETE
+Template inheritance
+
+
+
+
+
+"""

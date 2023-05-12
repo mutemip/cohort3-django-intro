@@ -1,0 +1,9 @@
+<h1>Post No: {{ post.id}}</h1>
+
+<div>
+    <p><em>{{post.title}}</em> Written by Author: <i>{{post.author}}</i> posted on {{post.date}} </p>
+    <p>Content: {{post.content}}</p>
+
+    <a href="{% url 'articles' %}">Go Back</a>
+    <!-- <input type="button" value="Go Back"> -->
+</div>
