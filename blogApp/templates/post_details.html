@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <h1>Post No: {{ post.id}}</h1>
 
 <div>
@@ -7,3 +10,5 @@
     <a href="{% url 'articles' %}">Go Back</a>
     <!-- <input type="button" value="Go Back"> -->
 </div>
+
+{% endblock%}
