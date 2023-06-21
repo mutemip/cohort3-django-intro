@@ -12,9 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-wwk2a-0*h7c$$k!t#)0r8w73l7aa*nynx!&@+our!$+t5p!8lo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["cohort3-django-intro-production.up.railway.app/"]
 
 
 # Application definition
@@ -38,12 +38,14 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'blogProject.urls'
@@ -71,26 +73,26 @@ WSGI_APPLICATION = 'blogProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
-DATABASES = {   
-    'default': {   
-        'ENGINE': 'django.db.backends.mysql',   
-        'NAME': 'bavo_db',   
-        'USER': 'bavo',   
-        'PASSWORD': 'Qwerty123',   
-        'HOST': '127.0.0.1',   
-        'PORT': '3306',   
-        'OPTIONS': {   
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"   
-        }   
-    }   
-} 
+# DATABASES = {   
+#     'default': {   
+#         'ENGINE': 'django.db.backends.mysql',   
+#         'NAME': 'bavo_db',   
+#         'USER': 'bavo',   
+#         'PASSWORD': 'Qwerty123',   
+#         'HOST': '127.0.0.1',   
+#         'PORT': '3306',   
+#         'OPTIONS': {   
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"   
+#         }   
+#     }   
+# } 
 
 
 
@@ -125,16 +127,29 @@ USE_I18N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 STATICFILES_DIRS = [
     # "blogApp/static",
     os.path.join(BASE_DIR, 'static'),
-]
+ ]
+
+# whitenoce config
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+CSRF_TRUSTED_ORIGINS = ['cohort3-django-intro-production.up.railway.app/']
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
