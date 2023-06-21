@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-wwk2a-0*h7c$$k!t#)0r8w73l7aa*nynx!&@+our!$+t5p!8lo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["cohort3-django-intro-production.up.railway.app/"]
+ALLOWED_HOSTS = ["https://cohort3-django-intro-production.up.railway.app/"]
 
 
 # Application definition
@@ -147,7 +147,7 @@ STATICFILES_DIRS = [
 # whitenoce config
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-CSRF_TRUSTED_ORIGINS = ['cohort3-django-intro-production.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://cohort3-django-intro-production.up.railway.app/']
 
 
 
